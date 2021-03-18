@@ -1,0 +1,54 @@
+  
+/ *
+  模擬輸入
+  通過讀取模擬引腳0和10上的模擬傳感器來演示模擬輸入
+  打開和關閉連接到數字引腳13的發光二極管（LED）。
+  LED開啟和關閉的時間長短取決於獲得的值
+  通過analogRead（）。
+  電路：
+  -電位器
+    電位計的中心引腳到模擬輸入0
+    一側引腳（任一側）接地
+    另一端為+ 5V
+  - 引領
+    連接到數字量輸出13的陽極（長腳）
+    陰極（短腳）接地
+  -注意：由於大多數Arduino的LED都連接到內置的LED引腳13
+    板上，LED是可選的。
+  由David Cuartielles創建
+  於2011年8月30日修改
+  湯姆·伊戈（Tom Igoe）
+  此示例代碼在公共領域。
+  http://www.arduino.cc/en/Tutorial/AnalogInput
+* /
+
+int sensorPin = A0;    //選擇電位器的輸入引腳
+int sensorValue = 0 ;  //變量以存儲來自傳感器的值
+無效的 熱敏電阻（int16_t ADCvalue）
+{
+  雙T，溫度；
+  雙T0 = 301.15 ;
+  雙lnR；
+  int16_t R;
+  int16_t R0 = 8805 ;
+  int16_t B = 3950 ;
+  int16_t上拉= 9930 ;
+
+
+  T = 1 /（1 / T0 +（log（R）-log（R0））/ B）;
+  溫度= T- 273.15 ;
+
+  printf（“ ADC：％4d，R =％d，Temp。=％f \ n ”，ADCvalue，R，Temp）;
+}
+無效 設置（）{
+  序列號。開始（115200）;
+}
+
+
+無效 循環（）{
+  //從傳感器讀取值：
+  sensorValue = analogRead（sensorPin）;
+  序列號。println（sensorValue）;
+  
+  
+}
